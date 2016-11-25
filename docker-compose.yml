@@ -1,9 +1,13 @@
-master:
-  build: .
-  environment:
-    JAVA_OPTS: "-Djava.awt.headless=true"
-  ports:
-    - "50000:50000"
-    - "8080:8080"
-  volumes:
-    - /var/jenkins_home
+version: "2"
+services:
+  jenkins:
+    build: .
+    environment:
+      JAVA_OPTS: "-Djava.awt.headless=true"
+    ports:
+      - "50000:50000"
+      - "8080:8080"
+    volumes:
+      - /usr/bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock  
+      - /var/jenkins_home
