@@ -1,7 +1,9 @@
 FROM openjdk:8-jdk
 
 # Add some basic build tools to container (make, git, curl)
-# NOTE: Docker itself can be made accessible through bind mounting - see volumes in docker-compose.yml
+# NOTE: Docker itself can be made accessible through bind mounting - i.e. add the following volumes in docker-compose.yml
+#  - /usr/bin/docker:/usr/bin/docker
+#  - /var/run/docker.sock:/var/run/docker.sock 
 RUN apt-get update && apt-get install -y build-essential git curl && rm -rf /var/lib/apt/lists/*
 
 # Add Docker Compose - see https://docs.docker.com/compose/install/
